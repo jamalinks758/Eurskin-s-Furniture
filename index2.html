@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Eurskin's Furniture — Bespoke handcrafted furniture for kitchens, living rooms, bedrooms and bathrooms. Custom joinery built to last generations. Saint Lucia."/>
+  <title>Eurskin's Furniture — Bespoke Handcrafted Joinery, Saint Lucia</title>
+
+  <!-- THEME — inline to prevent flash of wrong theme -->
+  <script>
+    (function() {
+      var stored = localStorage.getItem('ef-theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- PRECONNECT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- FONTS — deferred -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  </noscript>
+
+  <!-- FONT AWESOME — deferred -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  </noscript>
+
+<style>
+/* ═══════════════════════════════════════════
+   FONT DISPLAY SWAP
+═══════════════════════════════════════════ */
+@font-face { font-display: swap; }
+
+/* ═══════════════════════════════════════════
+   ROOT — GOLD & WOOD PALETTE
+═══════════════════════════════════════════ */
+:root {
+  /* Core palette — pulled from logo */
+  --gold:        #c9a84c;
+  --gold2:       #e2c06a;
+  --gold3:       #a07832;
+  --gold-light:  #f0d898;
+  --gold-g:      rgba(201,168,76,0.18);
+  --gold-b:      rgba(201,168,76,0.08);
+
+  /* Wood tones */
+  --walnut:      #3d2b1a;
+  --walnut2:     #4e3520;
+  --walnut3:     #5e4028;
+  --oak:         #8b6340;
+  --oak2:        #a07848;
+  --timber:      #1e1209;
+
+  /* Backgrounds */
+  --bg:          #0d0905;
+  --bg2:         #140c06;
+  --bg3:         #1c1208;
+  --surface:     #241808;
+  --card:        #1a1008;
+
+  /* Text */
+  --white:       #ffffff;
+  --cream:       #f5edd8;
+  --off:         #d8c8a8;
+  --muted:       #907860;
+  --muted2:      #705840;
+
+  /* Accents */
+  --border:      rgba(201,168,76,0.16);
+  --border2:     rgba(201,168,76,0.08);
+  --wa:          #25D366;
+  --shadow:      0 16px 60px rgba(0,0,0,0.5);
+  --radius:      16px;
+
+  /* Typography */
+  --font-d:      'Rajdhani', sans-serif;
+  --font-b:      'Outfit', sans-serif;
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--cream);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Wood grain texture overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.45' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23grain)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9998; opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════
+   SKIP LINK (accessibility)
+═══════════════════════════════════════════ */
+.skip-link {
+  position: absolute; top: -999px; left: -999px;
+  background: var(--gold); color: var(--timber);
+  padding: 10px 18px; font-weight: 700;
+  border-radius: 0 0 8px 0; z-index: 9999;
+  font-family: var(--font-b); font-size: 0.88rem;
+  text-decoration: none;
+}
+.skip-link:focus { top: 0; left: 0; }
+
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+.ef-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 600;
+  height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 36px;
+  background: rgba(13,9,5,0.93);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+
+.nav-logo-img {
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.nav-name {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.nav-name-top {
+  font-family: var(--font-d); font-size: 1.15rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
+}
+.nav-name-sub {
+  font-size: 0.52rem; color: var(--muted);
+  letter-spacing: 3px; text-transform: uppercase;
+}
+
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-family: var(--font-b); font-size: 0.75rem; font-weight: 500;
+  color: var(--muted); text-decoration: none;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover,
+.nav-links a:focus { color: var(--gold); outline: none; }
+
+.btn-nav-cta {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: transparent; color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 4px; padding: 8px 20px;
+  font-family: var(--font-b); font-size: 0.72rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  letter-spacing: 2px; text-transform: uppercase;
+  transition: all 0.25s;
+}
+.btn-nav-cta:hover, .btn-nav-cta:focus {
+  background: var(--gold); color: var(--timber);
+  box-shadow: 0 6px 24px var(--gold-g);
+  outline: none;
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.ef-hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 60px 80px;
+  position: relative; overflow: hidden;
+}
+
+/* Angled wood-grain panels */
+.hero-panels {
+  position: absolute; inset: 0; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  transform: skewX(-3deg) scale(1.06);
+  transform-origin: center;
+}
+.hero-panel {
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-size: clamp(3rem, 6vw, 7rem);
+}
+.hero-panel:nth-child(1) { background: linear-gradient(160deg, #2a1a0a, #1a0e05); }
+.hero-panel:nth-child(2) { background: linear-gradient(160deg, #3a2212, #28160a); }
+.hero-panel:nth-child(3) { background: linear-gradient(160deg, #4a2e18, #341e0e); }
+.hero-panel:nth-child(4) { background: linear-gradient(160deg, #3a2010, #28140a); }
+.hero-panel:nth-child(5) { background: linear-gradient(160deg, #261608, #180e04); }
+
+/* wood grain lines within panels */
+.hero-panel::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    175deg,
+    transparent 0px,
+    rgba(201,168,76,0.03) 1px,
+    transparent 2px,
+    transparent 18px
+  );
+}
+
+/* gradient overlay */
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background:
+    linear-gradient(to right, rgba(13,9,5,0.97) 35%, rgba(13,9,5,0.4) 100%),
+    linear-gradient(to top, rgba(13,9,5,1) 0%, transparent 55%);
+}
+
+/* gold chisel accent line */
+.hero-accent-line {
+  position: absolute; left: 56px; top: 15%; bottom: 15%;
+  width: 2px; z-index: 3;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  opacity: 0.7;
+}
+
+.hero-content { position: relative; z-index: 4; max-width: 680px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 22px;
+  animation: fadeUp 0.7s ease both;
+}
+.eyebrow-rule { width: 36px; height: 1px; background: var(--gold); }
+.eyebrow-text {
+  font-family: var(--font-b); font-size: 0.65rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 4px; text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 700; line-height: 0.95;
+  letter-spacing: -0.5px; text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 22px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero h1 .gold-word {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-desc {
+  font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+  color: var(--off); max-width: 460px;
+  line-height: 1.8; font-weight: 300;
+  margin-bottom: 36px;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-location {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.7rem; color: var(--muted);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 32px;
+  animation: fadeUp 0.7s 0.25s ease both;
+}
+
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: linear-gradient(135deg, var(--gold2), var(--gold), var(--gold3));
+  color: var(--timber); border: none;
+  border-radius: 4px; padding: 15px 32px;
+  font-family: var(--font-b); font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-primary:hover, .btn-primary:focus {
+  opacity: 0.9; transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--gold-g);
+  outline: none;
+}
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: transparent; color: var(--cream);
+  border: 1px solid rgba(245,237,216,0.25);
+  border-radius: 4px; padding: 14px 28px;
+  font-family: var(--font-b); font-size: 0.82rem; font-weight: 400;
+  cursor: pointer; text-decoration: none;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover, .btn-ghost:focus {
+  border-color: var(--gold); color: var(--gold);
+  outline: none;
+}
+
+/* hero stats strip */
+.hero-stats {
+  position: absolute; bottom: 80px; right: 60px; z-index: 4;
+  display: flex; flex-direction: column; gap: 18px;
+  animation: fadeUp 0.7s 0.5s ease both;
+}
+.h-stat { text-align: right; }
+.h-stat-num {
+  font-family: var(--font-d); font-size: 2rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
+}
+.h-stat-lbl {
+  font-size: 0.6rem; color: var(--muted);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* hero scroll pulse */
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%;
+  transform: translateX(-50%); z-index: 4;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: var(--muted); font-size: 0.6rem;
+  letter-spacing: 3px; text-transform: uppercase;
+  animation: fadeUp 0.7s 0.7s ease both;
+}
+.scroll-rod {
+  width: 1px; height: 32px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollRod 2s ease-in-out infinite;
+}
+@keyframes scrollRod {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50%       { opacity: 1;   transform: scaleY(1); }
+}
+
+/* ═══════════════════════════════════════════
+   GOLD TICKER
+═══════════════════════════════════════════ */
+.ef-ticker {
+  background: linear-gradient(90deg, var(--gold3), var(--gold), var(--gold2), var(--gold), var(--gold3));
+  padding: 11px 0; overflow: hidden; white-space: nowrap;
+}
+.ticker-track {
+  display: inline-flex; gap: 0;
+  animation: tickScroll 34s linear infinite;
+}
+.ticker-item {
+  font-family: var(--font-d); font-size: 0.9rem; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--timber);
+  padding: 0 30px;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.tick-sep { opacity: 0.4; font-size: 0.45rem; }
+@keyframes tickScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION HELPERS
+═══════════════════════════════════════════ */
+.ef-section { padding: 96px 24px; }
+.sec-inner  { max-width: 1100px; margin: 0 auto; }
+.sec-center { text-align: center; }
+
+.sec-eye {
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sec-eye::before, .sec-eye::after {
+  content: ''; flex: 0 0 24px; height: 1px;
+  background: var(--gold); opacity: 0.5;
+}
+.sec-eye.center { justify-content: center; }
+
+.sec-h2 {
+  font-family: var(--font-d);
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--cream);
+  line-height: 1; margin-bottom: 14px;
+}
+.sec-h2 .gold-g {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sec-sub {
+  font-size: 0.92rem; color: var(--muted);
+  max-width: 500px; line-height: 1.8; font-weight: 300;
+}
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* ═══════════════════════════════════════════
+   WHY SECTION — THE CRAFT ARGUMENT
+═══════════════════════════════════════════ */
+.why-bg { background: var(--bg2); }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+  margin-top: 56px;
+}
+@media (max-width: 800px) { .why-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+.why-left {}
+.why-statement {
+  font-family: var(--font-d);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--cream);
+  line-height: 1.15; margin-bottom: 22px;
+}
+.why-statement em {
+  font-style: italic; color: var(--gold);
+  font-family: var(--font-d);
+}
+.why-body {
+  font-size: 0.92rem; color: var(--muted);
+  line-height: 1.85; font-weight: 300;
+}
+.why-body p + p { margin-top: 14px; }
+
+.why-quote {
+  border-left: 2px solid var(--gold);
+  padding-left: 20px; margin-top: 26px;
+  font-family: var(--font-d); font-size: 1.1rem;
+  font-style: italic; color: var(--off);
+  line-height: 1.6; letter-spacing: 0.3px;
+}
+
+.why-right {}
+.why-points {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.why-point {
+  background: var(--card); border: 1px solid var(--border2);
+  padding: 22px 24px;
+  display: flex; gap: 18px; align-items: flex-start;
+  transition: border-color 0.25s, background 0.25s;
+}
+.why-point:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+.why-point:last-child  { border-radius: 0 0 var(--radius) var(--radius); }
+.why-point:hover { border-color: var(--border); background: var(--bg3); }
+
+.wp-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: var(--gold-b); border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--gold);
+  transition: background 0.25s;
+}
+.why-point:hover .wp-icon { background: var(--gold-g); }
+
+.wp-text {}
+.wp-title {
+  font-family: var(--font-d); font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--cream); margin-bottom: 4px;
+}
+.wp-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+/* ═══════════════════════════════════════════
+   ROOMS / SPECIALITIES GRID
+═══════════════════════════════════════════ */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px; margin-top: 48px;
+}
+
+.room-card {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.25s, box-shadow 0.3s;
+  position: relative;
+  cursor: default;
+}
+.room-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0); transform-origin: center;
+  transition: transform 0.4s ease;
+}
+.room-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201,168,76,0.3);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+.room-card:hover::after { transform: scaleX(1); }
+
+/* visual block */
+.room-visual {
+  height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.room-visual-bg {
+  position: absolute; inset: 0;
+  opacity: 0.6; transition: opacity 0.35s;
+}
+.room-card:hover .room-visual-bg { opacity: 0.85; }
+.room-visual-emoji {
+  font-size: 4rem; position: relative; z-index: 1;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+}
+.room-card:hover .room-visual-emoji {
+  transform: scale(1.2) translateY(-6px);
+}
+
+/* room badge */
+.room-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--border);
+  border-radius: 50px; padding: 3px 11px;
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold); z-index: 2;
+}
+
+/* room body */
+.room-body { padding: 22px 22px 24px; }
+.room-cat {
+  font-size: 0.6rem; color: var(--gold);
+  letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 500; margin-bottom: 5px;
+}
+.room-name {
+  font-family: var(--font-d); font-size: 1.3rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--cream); margin-bottom: 8px; line-height: 1.1;
+}
+.room-desc {
+  font-size: 0.8rem; color: var(--muted);
+  line-height: 1.65; font-weight: 300; margin-bottom: 16px;
+}
+
+/* pieces list */
+.room-pieces {
+  display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 18px;
+}
+.room-piece {
+  background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: 4px; padding: 3px 9px;
+  font-size: 0.65rem; color: var(--muted);
+  font-weight: 400; letter-spacing: 0.5px;
+}
+
+.btn-room-wa {
+  width: 100%;
+  background: var(--bg3); color: var(--cream);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px; padding: 11px;
+  font-family: var(--font-b); font-size: 0.75rem; font-weight: 500;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.btn-room-wa:hover, .btn-room-wa:focus {
+  background: var(--wa); border-color: var(--wa);
+  color: white; outline: none;
+}
+
+/* ═══════════════════════════════════════════
+   PROCESS — THE CRAFT JOURNEY
+═══════════════════════════════════════════ */
+.process-bg { background: var(--bg2); }
+
+.process-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px; margin-top: 48px;
+  border: 1px solid var(--border2);
+  border-radius: var(--radius); overflow: hidden;
+}
+
+.process-step {
+  background: var(--card);
+  padding: 36px 24px;
+  position: relative;
+  transition: background 0.25s;
+}
+.process-step:hover { background: var(--bg3); }
+
+.ps-n {
+  font-family: var(--font-d); font-size: 4.5rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-g), transparent);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1; margin-bottom: 10px;
+  opacity: 0.4;
+}
+.ps-icon {
+  font-size: 1.5rem; display: block;
+  margin-bottom: 10px; color: var(--gold);
+}
+.ps-title {
+  font-family: var(--font-d); font-size: 1.05rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--cream); margin-bottom: 7px;
+}
+.ps-desc {
+  font-size: 0.78rem; color: var(--muted);
+  line-height: 1.65; font-weight: 300;
+}
+
+/* ═══════════════════════════════════════════
+   MATERIALS SECTION
+═══════════════════════════════════════════ */
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px; margin-top: 48px;
+}
+.mat-card {
+  background: var(--card); border: 1px solid var(--border2);
+  border-radius: 12px; padding: 24px 20px;
+  transition: transform 0.25s, border-color 0.2s;
+  text-align: center;
+}
+.mat-card:hover { transform: translateY(-3px); border-color: var(--border); }
+.mat-swatch {
+  width: 56px; height: 56px; border-radius: 50%;
+  margin: 0 auto 14px;
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+.mat-name {
+  font-family: var(--font-d); font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--cream); margin-bottom: 5px;
+}
+.mat-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.55; font-weight: 300; }
+
+/* ═══════════════════════════════════════════
+   QUOTE BUILDER
+═══════════════════════════════════════════ */
+.quote-section { background: var(--walnut); position: relative; overflow: hidden; }
+
+/* diagonal wood grain bg */
+.quote-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(
+      170deg,
+      rgba(201,168,76,0.03) 0px,
+      rgba(201,168,76,0.03) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+  pointer-events: none;
+}
+.quote-section::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.08), transparent 60%),
+    radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.05), transparent 60%);
+  pointer-events: none;
+}
+
+.quote-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+
+.quote-card {
+  background: rgba(13,9,5,0.7);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 48px 44px;
+  backdrop-filter: blur(10px);
+}
+
+.qb-heading {
+  font-family: var(--font-d); font-size: 1.4rem; font-weight: 600;
+  font-style: italic; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 6px;
+}
+.qb-sub {
+  font-size: 0.82rem; color: var(--muted); margin-bottom: 28px;
+  font-weight: 300; line-height: 1.65;
+}
+
+.qb-form {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  margin-bottom: 18px;
+}
+@media (max-width: 560px) { .qb-form { grid-template-columns: 1fr; } }
+
+.qb-field { display: flex; flex-direction: column; gap: 6px; }
+.qb-field.full { grid-column: 1 / -1; }
+
+.qb-label {
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--muted);
+}
+
+.qb-select, .qb-input, .qb-textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px; padding: 12px 14px;
+  color: var(--cream);
+  font-family: var(--font-b); font-size: 0.85rem;
+  outline: none; transition: border-color 0.2s;
+  width: 100%;
+}
+.qb-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23907860' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.qb-select:focus, .qb-input:focus, .qb-textarea:focus {
+  border-color: var(--gold);
+}
+.qb-select option { background: var(--bg2); color: var(--cream); }
+.qb-input::placeholder, .qb-textarea::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+.qb-textarea { resize: vertical; min-height: 90px; }
+
+.btn-get-quote {
+  width: 100%;
+  background: linear-gradient(135deg, var(--gold2), var(--gold), var(--gold3));
+  color: var(--timber); border: none;
+  border-radius: 8px; padding: 15px;
+  font-family: var(--font-b); font-size: 0.88rem; font-weight: 700;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-top: 6px;
+}
+.btn-get-quote:hover, .btn-get-quote:focus {
+  opacity: 0.9; transform: translateY(-2px);
+  box-shadow: 0 10px 30px var(--gold-g);
+  outline: none;
+}
+
+.qb-note {
+  text-align: center; margin-top: 12px;
+  font-size: 0.7rem; color: var(--muted);
+}
+
+/* ═══════════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════════ */
+.testi-bg { background: var(--bg2); }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 16px; margin-top: 44px;
+}
+.testi-card {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 28px 24px;
+  transition: transform 0.25s, border-color 0.2s;
+}
+.testi-card:hover { transform: translateY(-3px); border-color: var(--border); }
+
+.testi-stars {
+  display: flex; gap: 3px; margin-bottom: 12px;
+}
+.testi-stars i { color: var(--gold); font-size: 0.75rem; }
+
+.testi-item {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--gold-b); border: 1px solid var(--border2);
+  border-radius: 50px; padding: 3px 10px;
+  font-size: 0.6rem; font-weight: 600;
+  color: var(--gold); letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+
+.testi-quote {
+  font-size: 0.87rem; color: var(--off);
+  line-height: 1.75; font-weight: 300;
+  font-style: italic; margin-bottom: 18px;
+}
+.testi-author { display: flex; align-items: center; gap: 10px; }
+.testi-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg3); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.testi-name { font-size: 0.85rem; font-weight: 600; color: var(--cream); }
+.testi-room { font-size: 0.68rem; color: var(--muted); }
+
+/* ═══════════════════════════════════════════
+   FINAL CTA
+═══════════════════════════════════════════ */
+.final-sec { padding: 0 24px 96px; }
+
+.final-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border); border-radius: 20px;
+  overflow: hidden;
+}
+@media (max-width: 680px) {
+  .final-inner { grid-template-columns: 1fr; }
+}
+
+.final-left {
+  padding: 60px 48px;
+  background: var(--bg2);
+  position: relative; overflow: hidden;
+}
+.final-left::before {
+  content: '';
+  position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+}
+
+.final-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px;
+}
+.final-eyebrow-line { width: 24px; height: 1px; background: var(--gold); }
+.final-eyebrow-text {
+  font-size: 0.6rem; color: var(--gold);
+  letter-spacing: 3px; text-transform: uppercase;
+}
+.final-h2 {
+  font-family: var(--font-d); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--cream); line-height: 1.05; margin-bottom: 14px;
+}
+.final-h2 .gold-g {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.final-sub {
+  font-size: 0.88rem; color: var(--muted);
+  line-height: 1.75; font-weight: 300; margin-bottom: 30px;
+}
+.btn-wa-main {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--wa); color: white; border: none;
+  border-radius: 6px; padding: 14px 28px;
+  font-family: var(--font-b); font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  letter-spacing: 0.5px;
+}
+.btn-wa-main:hover, .btn-wa-main:focus {
+  background: #20c05a; transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37,211,102,0.4);
+  outline: none;
+}
+
+.final-right {
+  padding: 60px 40px;
+  background: var(--card);
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 18px;
+}
+.fr-label {
+  font-size: 0.6rem; color: var(--gold);
+  letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px;
+}
+.fr-promise {
+  font-family: var(--font-d); font-size: 1.05rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--cream); margin-bottom: 14px;
+}
+.promise-list { display: flex; flex-direction: column; gap: 10px; }
+.promise-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.82rem; color: var(--off); line-height: 1.5;
+}
+.promise-item i { color: var(--gold); flex-shrink: 0; margin-top: 2px; font-size: 0.75rem; }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.ef-footer {
+  background: var(--timber);
+  border-top: 1px solid var(--border);
+  padding: 56px 24px 28px;
+}
+.footer-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 640px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+}
+
+.footer-brand-wrap { display: flex; align-items: flex-start; gap: 12px; }
+.footer-brand-text {}
+.footer-logo-name {
+  font-family: var(--font-d); font-size: 1.1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 4px;
+}
+.footer-logo-sub {
+  font-size: 0.52rem; color: var(--muted);
+  letter-spacing: 3px; text-transform: uppercase;
+}
+.footer-tagline {
+  font-size: 0.78rem; color: var(--muted2);
+  line-height: 1.65; max-width: 220px; margin-top: 10px;
+  font-weight: 300;
+}
+
+.footer-col-title {
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-links a {
+  color: var(--muted2); text-decoration: none;
+  font-size: 0.82rem; transition: color 0.2s;
+}
+.footer-links a:hover, .footer-links a:focus {
+  color: var(--gold); outline: none;
+}
+
+.footer-contact { display: flex; flex-direction: column; gap: 8px; }
+.footer-contact a {
+  color: var(--muted2); text-decoration: none;
+  font-size: 0.82rem;
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.2s;
+}
+.footer-contact a:hover, .footer-contact a:focus {
+  color: var(--gold); outline: none;
+}
+.footer-contact a i { color: var(--gold); font-size: 0.8rem; }
+
+.btn-wa-footer {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--wa); color: white;
+  border-radius: 6px; padding: 9px 18px;
+  font-size: 0.78rem; font-weight: 600;
+  text-decoration: none; margin-top: 10px;
+  transition: background 0.2s;
+}
+.btn-wa-footer:hover, .btn-wa-footer:focus {
+  background: #20c05a; outline: none;
+}
+
+.footer-bottom {
+  max-width: 1000px; margin: 36px auto 0;
+  border-top: 1px solid rgba(201,168,76,0.08);
+  padding-top: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 10px;
+  font-size: 0.7rem; color: var(--muted2);
+}
+.footer-bottom a { color: var(--gold); text-decoration: none; }
+
+/* ═══════════════════════════════════════════
+   STICKY MOBILE BAR
+═══════════════════════════════════════════ */
+.sticky-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 700;
+  background: var(--timber); border-top: 1px solid var(--border);
+  padding: 12px 20px; display: none;
+  align-items: center; justify-content: space-between; gap: 12px;
+  box-shadow: 0 -6px 24px rgba(0,0,0,0.5);
+}
+@media (max-width: 768px) { .sticky-bar { display: flex; } }
+
+.sticky-text { font-size: 0.78rem; }
+.sticky-text strong { color: var(--cream); display: block; }
+.sticky-text span { color: var(--muted); font-size: 0.7rem; }
+
+.btn-sticky-wa {
+  flex-shrink: 0;
+  background: var(--wa); color: white; border: none;
+  border-radius: 6px; padding: 10px 20px;
+  font-family: var(--font-b); font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  display: flex; align-items: center; gap: 7px;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════
+   FLOATING WA BUTTON
+═══════════════════════════════════════════ */
+.float-wa {
+  position: fixed; bottom: 80px; right: 24px; z-index: 650;
+  background: var(--wa); color: white;
+  width: 58px; height: 58px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+  transition: transform 0.2s;
+  animation: waPulse 2.5s ease-in-out infinite;
+}
+.float-wa:hover, .float-wa:focus {
+  transform: scale(1.1); animation: none; outline: none;
+}
+@keyframes waPulse {
+  0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+  50%      { box-shadow: 0 6px 32px rgba(37,211,102,0.8), 0 0 0 12px rgba(37,211,102,0.08); }
+}
+@media (min-width: 769px) { .float-wa { bottom: 24px; } }
+
+/* ═══════════════════════════════════════════
+   REVEAL ANIMATION
+═══════════════════════════════════════════ */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE NAV
+═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .ef-nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .ef-hero { padding: 0 24px 60px; }
+  .hero-stats { display: none; }
+}
+@media (max-width: 600px) {
+  .ef-section { padding: 72px 16px; }
+  .final-inner { grid-template-columns: 1fr; }
+  .final-right { border-left: none; border-top: 1px solid var(--border); }
+  .quote-card { padding: 32px 20px; }
+}
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ═══════════════════════════════════════════
+   FOCUS VISIBLE (accessibility)
+═══════════════════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════
+   THEME TRANSITION — smooth swap on toggle
+   Only applies AFTER first paint (class added
+   by JS after theme is already set)
+═══════════════════════════════════════════ */
+html.theme-ready,
+html.theme-ready body,
+html.theme-ready .ef-nav,
+html.theme-ready .why-point,
+html.theme-ready .room-card,
+html.theme-ready .mat-card,
+html.theme-ready .testi-card,
+html.theme-ready .process-step,
+html.theme-ready .final-left,
+html.theme-ready .final-right,
+html.theme-ready .quote-card,
+html.theme-ready .sticky-bar,
+html.theme-ready .ef-footer,
+html.theme-ready .qb-select,
+html.theme-ready .qb-input,
+html.theme-ready .qb-textarea {
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.3s ease !important;
+}
+
+/* ═══════════════════════════════════════════
+   LIGHT THEME — warm cream & sunlit timber
+═══════════════════════════════════════════ */
+[data-theme="light"] {
+  /* Backgrounds — sunlight through a workshop window */
+  --bg:          #fdf8f0;
+  --bg2:         #f5edd8;
+  --bg3:         #ede0c4;
+  --surface:     #f0e4cc;
+  --card:        #ffffff;
+  --timber:      #f5edd8;  /* footer bg in light mode */
+
+  /* Text */
+  --cream:       #1e1209;  /* deep walnut — main text */
+  --off:         #3d2b18;  /* slightly lighter heading variant */
+  --muted:       #7a5c38;  /* warm mid-tone */
+  --muted2:      #5a4028;  /* footer text */
+  --white:       #1e1209;  /* repurposed — not needed direct */
+
+  /* Borders */
+  --border:      rgba(160,120,72,0.28);
+  --border2:     rgba(160,120,72,0.14);
+
+  /* Gold — identical, works on both themes */
+  --gold-g:      rgba(201,168,76,0.2);
+  --gold-b:      rgba(201,168,76,0.12);
+
+  /* Shadow lightened */
+  --shadow:      0 8px 32px rgba(100,60,20,0.12);
+}
+
+/* ── Light: Nav ── */
+[data-theme="light"] .ef-nav {
+  background: rgba(253,248,240,0.94);
+  border-bottom-color: var(--border);
+}
+
+/* ── Light: Hero overlay — cream fade instead of black ── */
+[data-theme="light"] .hero-overlay {
+  background:
+    linear-gradient(to right, rgba(253,248,240,0.97) 35%, rgba(253,248,240,0.5) 100%),
+    linear-gradient(to top, rgba(253,248,240,1) 0%, transparent 55%);
+}
+
+/* ── Light: Hero panels — lighter wood tones ── */
+[data-theme="light"] .hero-panel:nth-child(1) { background: linear-gradient(160deg, #c8a060, #b08040); }
+[data-theme="light"] .hero-panel:nth-child(2) { background: linear-gradient(160deg, #d8b070, #c09050); }
+[data-theme="light"] .hero-panel:nth-child(3) { background: linear-gradient(160deg, #e8c080, #d0a060); }
+[data-theme="light"] .hero-panel:nth-child(4) { background: linear-gradient(160deg, #d0a868, #b88848); }
+[data-theme="light"] .hero-panel:nth-child(5) { background: linear-gradient(160deg, #be9858, #a87838); }
+
+/* hero h1 text — walnut dark in light mode */
+[data-theme="light"] .hero h1 { color: #1e1209; }
+[data-theme="light"] .hero-desc { color: #5a4028; }
+
+/* ── Light: Why section ── */
+[data-theme="light"] .why-statement { color: #1e1209; }
+[data-theme="light"] .why-quote { color: #3d2b18; }
+
+/* ── Light: Section headings ── */
+[data-theme="light"] .sec-h2 { color: #1e1209; }
+[data-theme="light"] .why-body { color: #7a5c38; }
+
+/* ── Light: Why points ── */
+[data-theme="light"] .why-point { background: #ffffff; border-color: var(--border); }
+[data-theme="light"] .why-point:hover { background: #f5edd8; }
+[data-theme="light"] .wp-title { color: #1e1209; }
+
+/* ── Light: Room cards ── */
+[data-theme="light"] .room-card { background: #ffffff; box-shadow: 0 4px 20px rgba(100,60,20,0.08); }
+[data-theme="light"] .room-card:hover { box-shadow: 0 16px 40px rgba(100,60,20,0.14); }
+[data-theme="light"] .room-name { color: #1e1209; }
+[data-theme="light"] .room-desc { color: #7a5c38; }
+[data-theme="light"] .room-piece { background: #f5edd8; color: #7a5c38; border-color: var(--border2); }
+[data-theme="light"] .btn-room-wa { background: #f5edd8; color: #3d2b18; border-color: rgba(100,60,20,0.18); }
+[data-theme="light"] .btn-room-wa:hover { background: var(--wa); border-color: var(--wa); color: white; }
+
+/* ── Light: Process steps ── */
+[data-theme="light"] .process-step { background: #ffffff; }
+[data-theme="light"] .process-step:hover { background: #fdf8f0; }
+[data-theme="light"] .ps-title { color: #1e1209; }
+[data-theme="light"] .ps-desc { color: #7a5c38; }
+[data-theme="light"] .process-track { border-color: var(--border2); }
+
+/* ── Light: Material cards ── */
+[data-theme="light"] .mat-card { background: #ffffff; border-color: var(--border); }
+[data-theme="light"] .mat-name { color: #1e1209; }
+[data-theme="light"] .mat-desc { color: #7a5c38; }
+
+/* ── Light: Quote section ── */
+[data-theme="light"] .quote-section { background: #e8d4b0; }
+[data-theme="light"] .quote-card { background: rgba(253,248,240,0.92); }
+[data-theme="light"] .qb-heading { color: var(--gold3); }
+[data-theme="light"] .qb-sub { color: #7a5c38; }
+[data-theme="light"] .qb-label { color: #7a5c38; }
+[data-theme="light"] .qb-select,
+[data-theme="light"] .qb-input,
+[data-theme="light"] .qb-textarea {
+  background: rgba(255,255,255,0.7);
+  border-color: rgba(160,120,72,0.25);
+  color: #1e1209;
+}
+[data-theme="light"] .qb-select option { background: #f5edd8; color: #1e1209; }
+[data-theme="light"] .qb-input::placeholder,
+[data-theme="light"] .qb-textarea::placeholder { color: rgba(100,60,20,0.35); }
+[data-theme="light"] .qb-note { color: #7a5c38; }
+
+/* ── Light: Testimonials ── */
+[data-theme="light"] .testi-bg { background: #f5edd8; }
+[data-theme="light"] .testi-card { background: #ffffff; border-color: var(--border); }
+[data-theme="light"] .testi-quote { color: #3d2b18; }
+[data-theme="light"] .testi-name { color: #1e1209; }
+[data-theme="light"] .testi-room { color: #7a5c38; }
+[data-theme="light"] .testi-avatar { background: #f5edd8; border-color: var(--border); }
+
+/* ── Light: Final CTA ── */
+[data-theme="light"] .final-inner { border-color: var(--border); }
+[data-theme="light"] .final-left { background: #f5edd8; }
+[data-theme="light"] .final-right { background: #ffffff; border-left-color: var(--border); }
+[data-theme="light"] .final-h2 { color: #1e1209; }
+[data-theme="light"] .final-sub { color: #7a5c38; }
+[data-theme="light"] .fr-promise { color: #1e1209; }
+[data-theme="light"] .promise-item { color: #3d2b18; }
+
+/* ── Light: Footer ── */
+[data-theme="light"] .ef-footer { background: #1e1209; }
+[data-theme="light"] .footer-tagline { color: #907860; }
+[data-theme="light"] .footer-links a { color: #907860; }
+[data-theme="light"] .footer-links a:hover { color: var(--gold); }
+[data-theme="light"] .footer-contact a { color: #907860; }
+[data-theme="light"] .footer-bottom { color: #705840; border-top-color: rgba(201,168,76,0.1); }
+[data-theme="light"] .footer-logo-sub { color: #907860; }
+
+/* ── Light: Sticky bar ── */
+[data-theme="light"] .sticky-bar { background: #ffffff; border-top-color: var(--border); box-shadow: 0 -4px 20px rgba(100,60,20,0.1); }
+[data-theme="light"] .sticky-text strong { color: #1e1209; }
+[data-theme="light"] .sticky-text span { color: #7a5c38; }
+
+/* ── Light: Scrollbar ── */
+[data-theme="light"] ::-webkit-scrollbar-track { background: #f5edd8; }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(160,120,72,0.3); }
+
+/* ── Light: Nav name sub ── */
+[data-theme="light"] .nav-name-sub { color: #7a5c38; }
+
+/* ── Light: Hero location ── */
+[data-theme="light"] .hero-location { color: #7a5c38; }
+[data-theme="light"] .h-stat-lbl { color: #7a5c38; }
+[data-theme="light"] .hero-scroll { color: #7a5c38; }
+
+/* ── Light: Btn ghost ── */
+[data-theme="light"] .btn-ghost {
+  color: #1e1209;
+  border-color: rgba(30,18,9,0.3);
+}
+[data-theme="light"] .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── Light: Process bg ── */
+[data-theme="light"] .process-bg { background: #f5edd8; }
+
+/* ── Light: Why bg ── */
+[data-theme="light"] .why-bg { background: #f5edd8; }
+
+/* ═══════════════════════════════════════════
+   THEME TOGGLE BUTTON
+═══════════════════════════════════════════ */
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--gold);
+  font-size: 1rem;
+  transition: background 0.2s, border-color 0.2s, transform 0.3s;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.theme-toggle:hover {
+  background: var(--gold-b);
+  border-color: var(--gold);
+  transform: rotate(20deg);
+}
+.theme-toggle:focus { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* icon swap */
+.theme-toggle .icon-dark,
+.theme-toggle .icon-light {
+  position: absolute;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.theme-toggle .icon-dark  { opacity: 1; transform: scale(1); }
+.theme-toggle .icon-light { opacity: 0; transform: scale(0.5) rotate(90deg); }
+
+[data-theme="light"] .theme-toggle .icon-dark  { opacity: 0; transform: scale(0.5) rotate(-90deg); }
+[data-theme="light"] .theme-toggle .icon-light { opacity: 1; transform: scale(1) rotate(0deg); }
+</style>
+</head>
+<body>
+
+<!-- SKIP LINK -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- ═══════════════════════════════════
+     NAV
+═══════════════════════════════════ -->
+<nav class="ef-nav" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-brand" aria-label="Eurskin's Furniture — Home">
+    <img
+      src="/mnt/user-data/uploads/file_00000000a804722fa5e96a42b1fb300a.png"
+      alt="Eurskin's Furniture Logo"
+      width="44" height="44"
+      loading="lazy"
+      class="nav-logo-img"
+      onerror="this.style.display='none'"
+    />
+    <div class="nav-name">
+      <span class="nav-name-top">Eurskin's</span>
+      <span class="nav-name-sub">Furniture · Saint Lucia</span>
+    </div>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li><a href="#rooms">Specialities</a></li>
+    <li><a href="#process">Our Process</a></li>
+    <li><a href="#materials">Materials</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+  </ul>
+
+  <div style="display:flex;align-items:center;gap:12px;">
+    <!-- THEME TOGGLE -->
+    <button
+      class="theme-toggle"
+      id="themeToggle"
+      aria-label="Switch to light mode"
+      title="Toggle light / dark mode"
+      onclick="toggleTheme()"
+    >
+      <!-- Moon icon — visible in dark mode -->
+      <i class="fa-solid fa-moon icon-dark" aria-hidden="true"></i>
+      <!-- Sun icon — visible in light mode -->
+      <i class="fa-solid fa-sun icon-light" aria-hidden="true"></i>
+    </button>
+
+    <a
+      href="https://wa.me/17587235872?text=Hi%20Eurskin's%20Furniture!%20I%27d%20like%20to%20discuss%20a%20custom%20furniture%20project%20🪵"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-nav-cta"
+      aria-label="Get a quote on WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+      Get a Quote
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<main id="main-content">
+<section class="ef-hero" id="home" aria-label="Hero — Eurskin's Furniture">
+  <div class="hero-panels" aria-hidden="true">
+    <div class="hero-panel"></div>
+    <div class="hero-panel"></div>
+    <div class="hero-panel"></div>
+    <div class="hero-panel"></div>
+    <div class="hero-panel"></div>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-accent-line" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow" aria-hidden="true">
+      <span class="eyebrow-rule"></span>
+      <span class="eyebrow-text">Bespoke Handcrafted Joinery</span>
+    </div>
+
+    <h1>
+      Built by<br/>
+      <span class="gold-word">Hand.</span><br/>
+      Built to Last.
+    </h1>
+
+    <p class="hero-desc">
+      Every piece Eurskin's crafts begins with a conversation about how you live — and ends with furniture that outlasts trends, outlasts fashion, and outlasts the ordinary.
+    </p>
+
+    <div class="hero-location" aria-label="Location: Saint Lucia, Caribbean">
+      <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+      Saint Lucia &nbsp;·&nbsp; Caribbean &nbsp;·&nbsp; Custom Commissions
+    </div>
+
+    <div class="hero-btns">
+      <a
+        href="https://wa.me/17587235872?text=Hi%20Eurskin's%20Furniture!%20I%27d%20like%20to%20commission%20a%20custom%20piece.%20Can%20we%20discuss%3F%20🪵"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+        aria-label="Commission a piece via WhatsApp"
+      >
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        Commission a Piece
+      </a>
+      <a href="#rooms" class="btn-ghost" aria-label="Browse our specialities">
+        Browse Specialities
+        <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats" aria-label="Key facts">
+    <div class="h-stat">
+      <div class="h-stat-num">15+</div>
+      <div class="h-stat-lbl">Years Experience</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-num">400+</div>
+      <div class="h-stat-lbl">Pieces Crafted</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-num">100%</div>
+      <div class="h-stat-lbl">Custom Built</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-rod"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     TICKER
+═══════════════════════════════════ -->
+<div class="ef-ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- ═══════════════════════════════════
+     WHY EURSKIN'S
+═══════════════════════════════════ -->
+<section class="ef-section why-bg" id="about" aria-labelledby="why-heading">
+  <div class="sec-inner">
+    <div class="why-grid">
+      <div class="why-left reveal">
+        <div class="sec-eye" aria-hidden="true">The Eurskin's Standard</div>
+        <h2 class="why-statement" id="why-heading">
+          Most furniture is <em>bought.</em><br/>
+          Ours is <em>earned.</em>
+        </h2>
+        <div class="why-body">
+          <p>Mass-produced furniture is built to a price. We build to a legacy. Every joint is hand-cut. Every surface is finished by someone who takes pride in what they leave behind. There are no shortcuts — because you'll be living with this furniture for decades, not seasons.</p>
+          <p>When you commission a piece from Eurskin's, you're not buying stock. You're directing a craftsman who will consult with you, sketch to your space, source the finest local and imported timbers, and build something that fits your home and your life — precisely.</p>
+        </div>
+        <blockquote class="why-quote">
+          "Wood has memory. It remembers the tree it came from, the hands that shaped it, and the home it belongs to. We make sure all three are worth remembering."
+        </blockquote>
+      </div>
+
+      <div class="why-right reveal">
+        <div class="why-points" role="list">
+          <div class="why-point" role="listitem">
+            <div class="wp-icon" aria-hidden="true">
+              <i class="fa-solid fa-ruler-combined"></i>
+            </div>
+            <div class="wp-text">
+              <div class="wp-title">Built to Your Exact Dimensions</div>
+              <div class="wp-desc">We measure your space, not a catalogue. Every piece is designed from scratch to fit your room, your lifestyle, and your budget.</div>
+            </div>
+          </div>
+          <div class="why-point" role="listitem">
+            <div class="wp-icon" aria-hidden="true">
+              <i class="fa-solid fa-hand-sparkles"></i>
+            </div>
+            <div class="wp-text">
+              <div class="wp-title">Handcrafted Joinery</div>
+              <div class="wp-desc">Dovetails, mortise-and-tenon, hand-cut details — the techniques that have lasted centuries because they work better than any machine-pressed alternative.</div>
+            </div>
+          </div>
+          <div class="why-point" role="listitem">
+            <div class="wp-icon" aria-hidden="true">
+              <i class="fa-solid fa-tree"></i>
+            </div>
+            <div class="wp-text">
+              <div class="wp-title">Premium Timber Selection</div>
+              <div class="wp-desc">We work with walnut, mahogany, teak, oak, and locally sourced Caribbean hardwoods — each chosen for the specific piece being made.</div>
+            </div>
+          </div>
+          <div class="why-point" role="listitem">
+            <div class="wp-icon" aria-hidden="true">
+              <i class="fa-solid fa-infinity"></i>
+            </div>
+            <div class="wp-text">
+              <div class="wp-title">Built to Last Generations</div>
+              <div class="wp-desc">We design furniture that gets passed down, not replaced. Our standard is durability, refinement, and beauty that deepens over time.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     ROOMS / SPECIALITIES
+═══════════════════════════════════ -->
+<section class="ef-section" id="rooms" aria-labelledby="rooms-heading">
+  <div class="sec-inner">
+    <div class="reveal">
+      <div class="sec-eye" aria-hidden="true">Our Specialities</div>
+      <h2 class="sec-h2" id="rooms-heading">
+        Every Room.<br/><span class="gold-g">Every Piece.</span>
+      </h2>
+      <p class="sec-sub">From the kitchen cabinet to the bedroom wardrobe — if it's made of wood and built to matter, we build it.</p>
+    </div>
+    <div class="rooms-grid" id="roomsGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     PROCESS
+═══════════════════════════════════ -->
+<section class="ef-section process-bg" id="process" aria-labelledby="process-heading">
+  <div class="sec-inner">
+    <div class="sec-center reveal">
+      <div class="sec-eye center" aria-hidden="true">The Craft Journey</div>
+      <h2 class="sec-h2" id="process-heading">
+        From Conversation<br/>to <span class="gold-g">Creation.</span>
+      </h2>
+      <p class="sec-sub mx-auto">Every commission follows the same deliberate process — because great furniture can't be rushed.</p>
+    </div>
+    <div class="process-track" role="list">
+      <div class="process-step" role="listitem">
+        <div class="ps-n" aria-hidden="true">01</div>
+        <i class="fa-solid fa-comments ps-icon" aria-hidden="true"></i>
+        <div class="ps-title">The Consultation</div>
+        <div class="ps-desc">We start with a conversation — on WhatsApp, by phone, or in person. We listen to how you live, how you use your space, and what you need this piece to do.</div>
+      </div>
+      <div class="process-step" role="listitem">
+        <div class="ps-n" aria-hidden="true">02</div>
+        <i class="fa-solid fa-pencil-ruler ps-icon" aria-hidden="true"></i>
+        <div class="ps-title">Design & Sketch</div>
+        <div class="ps-desc">We sketch your piece to your exact dimensions and specifications. You approve the design before a single plank is cut.</div>
+      </div>
+      <div class="process-step" role="listitem">
+        <div class="ps-n" aria-hidden="true">03</div>
+        <i class="fa-solid fa-tree ps-icon" aria-hidden="true"></i>
+        <div class="ps-title">Timber Selection</div>
+        <div class="ps-desc">We select the finest timber for your specific piece — considering grain, durability, finish, and character. You can be part of this process.</div>
+      </div>
+      <div class="process-step" role="listitem">
+        <div class="ps-n" aria-hidden="true">04</div>
+        <i class="fa-solid fa-hammer ps-icon" aria-hidden="true"></i>
+        <div class="ps-title">The Build</div>
+        <div class="ps-desc">Hand-cut joints. Precision assembly. Multiple finish coats. We send progress updates via WhatsApp so you can see your piece taking shape.</div>
+      </div>
+      <div class="process-step" role="listitem">
+        <div class="ps-n" aria-hidden="true">05</div>
+        <i class="fa-solid fa-truck ps-icon" aria-hidden="true"></i>
+        <div class="ps-title">Delivery & Install</div>
+        <div class="ps-desc">We deliver, position, and install your piece to perfection. Your satisfaction is confirmed before we leave. The relationship doesn't end here.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     MATERIALS
+═══════════════════════════════════ -->
+<section class="ef-section" id="materials" aria-labelledby="materials-heading">
+  <div class="sec-inner">
+    <div class="sec-center reveal">
+      <div class="sec-eye center" aria-hidden="true">Our Timbers</div>
+      <h2 class="sec-h2" id="materials-heading">
+        The Wood We<br/><span class="gold-g">Work With.</span>
+      </h2>
+      <p class="sec-sub mx-auto">We source premium hardwoods locally and internationally — each species chosen for its character, strength, and beauty.</p>
+    </div>
+    <div class="materials-grid" id="materialsGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     QUOTE BUILDER
+═══════════════════════════════════ -->
+<section class="ef-section quote-section" id="quote" aria-labelledby="quote-heading">
+  <div class="quote-inner">
+    <div class="sec-center reveal" style="margin-bottom:36px;">
+      <div class="sec-eye center" aria-hidden="true">Start Your Commission</div>
+      <h2 class="sec-h2" id="quote-heading">
+        Tell Us What<br/><span class="gold-g">You Need.</span>
+      </h2>
+      <p class="sec-sub mx-auto">Fill in the details below and your enquiry goes straight to WhatsApp. We reply within hours — not days.</p>
+    </div>
+    <div class="quote-card reveal">
+      <div class="qb-heading">"Every great piece of furniture starts with a conversation."</div>
+      <div class="qb-sub">Give us the basics and we'll come back with a personalised quote and timeline.</div>
+
+      <div class="qb-form">
+        <div class="qb-field">
+          <label class="qb-label" for="qbRoom">Room</label>
+          <select class="qb-select" id="qbRoom" aria-label="Select room">
+            <option value="Kitchen">🍳 Kitchen</option>
+            <option value="Living Room">🛋️ Living Room</option>
+            <option value="Bedroom">🛏️ Bedroom</option>
+            <option value="Bathroom">🚿 Bathroom</option>
+            <option value="Dining Room">🍽️ Dining Room</option>
+            <option value="Home Office">💼 Home Office</option>
+            <option value="Outdoor">🌿 Outdoor / Patio</option>
+            <option value="Other">✦ Other / Multiple</option>
+          </select>
+        </div>
+        <div class="qb-field">
+          <label class="qb-label" for="qbPiece">Piece Type</label>
+          <select class="qb-select" id="qbPiece" aria-label="Select piece type">
+            <option value="Kitchen Cabinets">Kitchen Cabinets</option>
+            <option value="Wardrobe / Closet">Wardrobe / Closet</option>
+            <option value="Dining Table">Dining Table</option>
+            <option value="Bed Frame / Headboard">Bed Frame / Headboard</option>
+            <option value="TV Unit / Entertainment">TV Unit / Entertainment</option>
+            <option value="Bookshelf / Display Unit">Bookshelf / Display Unit</option>
+            <option value="Vanity Unit">Vanity Unit</option>
+            <option value="Desk / Study Unit">Desk / Study Unit</option>
+            <option value="Coffee / Side Tables">Coffee / Side Tables</option>
+            <option value="Custom / Multiple Pieces">Custom / Multiple Pieces</option>
+          </select>
+        </div>
+        <div class="qb-field">
+          <label class="qb-label" for="qbTimber">Preferred Timber</label>
+          <select class="qb-select" id="qbTimber" aria-label="Select preferred timber">
+            <option value="Unsure — advise me">Unsure — advise me</option>
+            <option value="Mahogany">Mahogany</option>
+            <option value="Walnut">Walnut</option>
+            <option value="Teak">Teak</option>
+            <option value="Oak">Oak</option>
+            <option value="Local Caribbean Hardwood">Local Caribbean Hardwood</option>
+            <option value="Mixed / Open to options">Mixed / Open to options</option>
+          </select>
+        </div>
+        <div class="qb-field">
+          <label class="qb-label" for="qbBudget">Budget Range</label>
+          <select class="qb-select" id="qbBudget" aria-label="Select budget range">
+            <option value="Under $500 XCD">Under $500 XCD</option>
+            <option value="$500 – $2,000 XCD">$500 – $2,000 XCD</option>
+            <option value="$2,000 – $5,000 XCD">$2,000 – $5,000 XCD</option>
+            <option value="$5,000+ XCD">$5,000+ XCD</option>
+            <option value="Flexible — let's talk">Flexible — let's talk</option>
+          </select>
+        </div>
+        <div class="qb-field full">
+          <label class="qb-label" for="qbDetails">Additional Details</label>
+          <textarea
+            class="qb-textarea" id="qbDetails"
+            aria-label="Additional details about your project"
+            placeholder="Dimensions, style preferences, colour, specific features… anything that helps us understand your vision."
+          ></textarea>
+        </div>
+      </div>
+
+      <button
+        class="btn-get-quote"
+        onclick="sendQuote()"
+        aria-label="Send quote enquiry on WhatsApp"
+      >
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        Send My Enquiry on WhatsApp
+      </button>
+      <p class="qb-note">We reply within hours. No commitment required — just a conversation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════ -->
+<section class="ef-section testi-bg" id="testimonials" aria-labelledby="testi-heading">
+  <div class="sec-inner">
+    <div class="sec-center reveal">
+      <div class="sec-eye center" aria-hidden="true">Client Words</div>
+      <h2 class="sec-h2" id="testi-heading">
+        What They Said<br/><span class="gold-g">After Delivery.</span>
+      </h2>
+      <p class="sec-sub mx-auto">We don't need to sell you on quality. Our clients do it for us.</p>
+    </div>
+    <div class="testi-grid" id="testiGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════ -->
+<section class="ef-section final-sec reveal" style="padding-top:0;" aria-labelledby="cta-heading">
+  <div class="final-inner">
+    <div class="final-left">
+      <div class="final-eyebrow" aria-hidden="true">
+        <span class="final-eyebrow-line"></span>
+        <span class="final-eyebrow-text">Commission Your Piece</span>
+      </div>
+      <h2 class="final-h2" id="cta-heading">
+        Your Home<br/>Deserves<br/><span class="gold-g">Better.</span>
+      </h2>
+      <p class="final-sub">
+        Mass-produced furniture ends up in skips. The pieces Eurskin's builds end up in family stories. One WhatsApp message is all it takes to start yours.
+      </p>
+      <a
+        href="https://wa.me/17587235872?text=Hi%20Eurskin's%20Furniture!%20🪵%20I%27d%20like%20to%20commission%20a%20custom%20piece.%20Can%20we%20talk%3F"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-wa-main"
+        aria-label="Start your commission on WhatsApp"
+      >
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        Start Your Commission on WhatsApp
+      </a>
+    </div>
+    <div class="final-right" aria-label="Our promises">
+      <div class="fr-label">The Eurskin's Promise</div>
+      <div class="fr-promise">What You Can Expect</div>
+      <ul class="promise-list" role="list">
+        <li class="promise-item" role="listitem">
+          <i class="fa-solid fa-check" aria-hidden="true"></i>
+          Free consultation — no pressure, no commitment
+        </li>
+        <li class="promise-item" role="listitem">
+          <i class="fa-solid fa-check" aria-hidden="true"></i>
+          Detailed written quote before any work begins
+        </li>
+        <li class="promise-item" role="listitem">
+          <i class="fa-solid fa-check" aria-hidden="true"></i>
+          WhatsApp progress updates throughout the build
+        </li>
+        <li class="promise-item" role="listitem">
+          <i class="fa-solid fa-check" aria-hidden="true"></i>
+          Delivery and professional installation included
+        </li>
+        <li class="promise-item" role="listitem">
+          <i class="fa-solid fa-check" aria-hidden="true"></i>
+          Post-delivery satisfaction guarantee
+        </li>
+        <li class="promise-item" role="listitem">
+          <i class="fa-solid fa-check" aria-hidden="true"></i>
+          Ongoing support — we're one message away, always
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<footer class="ef-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-wrap">
+        <img
+          src="/mnt/user-data/uploads/file_00000000a804722fa5e96a42b1fb300a.png"
+          alt="Eurskin's Furniture Logo"
+          width="48" height="48"
+          loading="lazy"
+          style="object-fit:contain;border-radius:4px;"
+          onerror="this.style.display='none'"
+        />
+        <div class="footer-brand-text">
+          <div class="footer-logo-name">Eurskin's Furniture</div>
+          <div class="footer-logo-sub">For All Your Furniture Needs</div>
+        </div>
+      </div>
+      <p class="footer-tagline">Bespoke handcrafted joinery built to last generations. Based in Saint Lucia.</p>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Specialities</div>
+      <ul class="footer-links" role="list">
+        <li><a href="#rooms">Kitchen Cabinetry</a></li>
+        <li><a href="#rooms">Living Room Furniture</a></li>
+        <li><a href="#rooms">Bedroom & Wardrobes</a></li>
+        <li><a href="#rooms">Bathroom Vanities</a></li>
+        <li><a href="#rooms">Dining & Tables</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact">
+        <a href="https://wa.me/17587235872" target="_blank" rel="noopener noreferrer" aria-label="Contact Eurskin's on WhatsApp">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          WhatsApp Us
+        </a>
+        <a href="tel:+17587235872" aria-label="Call Eurskin's Furniture">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          +1 (758) 723-5872
+        </a>
+        <a href="https://jamalinks758.github.io/jamalinks/" target="_blank" rel="noopener noreferrer" aria-label="Powered by JAMALINKS">
+          <i class="fa-solid fa-link" aria-hidden="true"></i>
+          jamalinks758.github.io
+        </a>
+      </div>
+      <a
+        href="https://wa.me/17587235872?text=Hi%20Eurskin's!%20I%27d%20like%20to%20discuss%20a%20custom%20furniture%20piece%20🪵"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-wa-footer"
+        aria-label="Chat with us on WhatsApp"
+      >
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        Chat Now
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 Eurskin's Furniture · Handcrafted Joinery · Saint Lucia · All rights reserved</span>
+    <a href="https://jamalinks758.github.io/jamalinks/" target="_blank" rel="noopener noreferrer">
+      Powered by JAMALINKS
+    </a>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE BAR -->
+<div class="sticky-bar" role="complementary" aria-label="Mobile booking bar">
+  <div class="sticky-text">
+    <strong>Commission a Piece</strong>
+    <span>We reply within hours 🪵</span>
+  </div>
+  <a
+    href="https://wa.me/17587235872?text=Hi%20Eurskin's!%20I%27d%20like%20to%20commission%20a%20custom%20furniture%20piece%20🪵"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn-sticky-wa"
+    aria-label="Commission a piece via WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    Get a Quote
+  </a>
+</div>
+
+<!-- FLOAT WA BUTTON -->
+<a
+  href="https://wa.me/17587235872?text=Hi%20Eurskin's%20Furniture!%20I%27d%20like%20to%20discuss%20a%20custom%20furniture%20project%20🪵"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="float-wa"
+  aria-label="Chat with Eurskin's Furniture on WhatsApp"
+  title="Chat on WhatsApp"
+>
+  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<script>
+/* ═══════════════════════════════════
+   DATA
+═══════════════════════════════════ */
+const PHONE = '17587235872';
+const SITE  = 'https://jamalinks758.github.io/jamalinks/eurskins-furniture.html';
+
+const rooms = [
+  {
+    cat: 'Kitchen', emoji: '🍳',
+    name: 'Kitchen Cabinetry',
+    desc: 'Custom-built kitchen cabinets, pantry units, and island tops. Every inch maximised. Every detail considered. The kitchen is the heartbeat of any home — yours should reflect that.',
+    pieces: ['Wall Cabinets','Base Cabinets','Island Units','Pantry Towers','Drawer Runners','Open Shelving'],
+    badge: 'Most Requested',
+    bg: 'linear-gradient(135deg,#3d2010,#28140a)',
+    wa: 'Hi Eurskin\'s! 🍳 I\'d like to discuss custom kitchen cabinetry. Can we start a conversation?'
+  },
+  {
+    cat: 'Living Room', emoji: '🛋️',
+    name: 'Living Room Pieces',
+    desc: 'Entertainment units, bookshelves, display cabinets, and coffee tables that become the focal point of how your home looks and feels to everyone who walks in.',
+    pieces: ['TV / Media Units','Display Cabinets','Bookshelves','Coffee Tables','Console Tables','Storage Units'],
+    badge: '',
+    bg: 'linear-gradient(135deg,#2a1e0e,#1a1208)',
+    wa: 'Hi Eurskin\'s! 🛋️ I\'d like to discuss living room furniture. Can we talk about what I need?'
+  },
+  {
+    cat: 'Bedroom', emoji: '🛏️',
+    name: 'Bedroom & Wardrobes',
+    desc: 'Fitted wardrobes, bed frames, headboards, and bedside units. We build bedrooms that feel private, complete, and beautifully yours — from the first glance to the last detail.',
+    pieces: ['Fitted Wardrobes','Bed Frames','Headboards','Bedside Tables','Dressing Tables','Chest of Drawers'],
+    badge: 'Popular',
+    bg: 'linear-gradient(135deg,#2e1c10,#1e1008)',
+    wa: 'Hi Eurskin\'s! 🛏️ I\'d like to discuss bedroom furniture. Can we start a conversation?'
+  },
+  {
+    cat: 'Bathroom', emoji: '🚿',
+    name: 'Bathroom Vanities',
+    desc: 'Timber vanity units, mirror cabinets, and storage solutions that bring warmth and sophistication into a space too often neglected. Water-resistant finishes guaranteed.',
+    pieces: ['Vanity Units','Mirror Cabinets','Floating Shelves','Towel Storage','Custom Basin Surrounds'],
+    badge: '',
+    bg: 'linear-gradient(135deg,#251a0e,#16100a)',
+    wa: 'Hi Eurskin\'s! 🚿 I\'d like to discuss a bathroom vanity unit. Can we talk?'
+  },
+  {
+    cat: 'Dining Room', emoji: '🍽️',
+    name: 'Dining Furniture',
+    desc: 'Solid-wood dining tables and sideboards that anchor a room. The dining table is where stories are told and memories made — it should be built to match that importance.',
+    pieces: ['Dining Tables','Extendable Tables','Sideboards','Display Hutches','Bench Seating','Bar Units'],
+    badge: 'Heirloom Quality',
+    bg: 'linear-gradient(135deg,#322010,#1e1208)',
+    wa: 'Hi Eurskin\'s! 🍽️ I\'d like to discuss a dining table or dining room furniture. Can we chat?'
+  },
+  {
+    cat: 'Home Office', emoji: '💼',
+    name: 'Home Office',
+    desc: 'Bespoke desks, built-in shelving, and filing cabinets designed to make your home office feel as serious and functional as a corner office — without leaving home.',
+    pieces: ['Desk Units','Floating Shelves','Filing Cabinets','Built-in Bookcases','Study Nooks','Cable Management'],
+    badge: '',
+    bg: 'linear-gradient(135deg,#281808,#180e04)',
+    wa: 'Hi Eurskin\'s! 💼 I\'d like to discuss home office furniture. Can we start a conversation?'
+  },
+];
+
+const materials = [
+  { emoji:'🌳', swatch:'#5d3a1a', name:'Mahogany',       desc:'Rich, reddish-brown Caribbean hardwood. Exceptional durability and a grain that improves with age. The gold standard of tropical furniture timber.' },
+  { emoji:'🌰', swatch:'#3d2b1a', name:'Walnut',         desc:'Deep, dramatic grain with warm chocolate tones. Prized worldwide for its character and strength. The choice for statement pieces.' },
+  { emoji:'🌲', swatch:'#7a5c32', name:'Teak',           desc:'Naturally water and rot resistant. Ideal for bathrooms, kitchens, and outdoor settings. Dense, golden-brown and built to outlast everything.' },
+  { emoji:'🟫', swatch:'#8b6340', name:'Oak',            desc:'Strong, pale, and beautifully grained. A timeless choice that works in both traditional and contemporary interiors. Excellent for tables and frames.' },
+  { emoji:'🌴', swatch:'#6b4a28', name:'Caribbean Hard', desc:'Locally sourced hardwoods with distinctive character and story. Sustainable, beautiful, and unique to the islands. Each plank is one of a kind.' },
+  { emoji:'🪵', swatch:'#4a3218', name:'Custom Mix',     desc:'Some of our best pieces combine species — dark walnut frame with oak inlay, or mahogany body with teak top. We advise the best combination for your piece.' },
+];
+
+const testimonials = [
+  {
+    item:'Kitchen Cabinetry',
+    quote:'"I\'ve had three kitchens built. None of them compared. Eurskin\'s took measurements I didn\'t even know mattered and came back with something that fits the space like it was always meant to be there. Two years in and it still looks brand new."',
+    name:'Nadine Charles', room:'Full Kitchen, Castries', avatar:'👩🏽'
+  },
+  {
+    item:'Bedroom Wardrobe',
+    quote:'"I gave them a rough idea. They gave me back a bedroom I\'m proud to show guests. The wardrobe runs full wall-to-ceiling and uses every millimetre. It\'s the first thing anyone comments on when they visit."',
+    name:'Marcus & Alicia Thompson', room:'Master Bedroom Fitout', avatar:'💑'
+  },
+  {
+    item:'Dining Table',
+    quote:'"We wanted a table our grandchildren would eat at. That\'s exactly what Eurskin\'s delivered. Solid mahogany. Seats twelve. Beautiful enough that we haven\'t put a tablecloth on it once."',
+    name:'Roland Estimé', room:'Dining Table, Gros Islet', avatar:'👨🏾'
+  },
+  {
+    item:'Living Room Unit',
+    quote:'"The entertainment unit is a conversation piece. Every visitor asks about it. Eurskin\'s communicated throughout the entire build — WhatsApp updates, photos, everything. I felt involved even though I just waited."',
+    name:'Steph Mathurin', room:'TV & Display Unit, Rodney Bay', avatar:'👩🏻'
+  },
+  {
+    item:'Bathroom Vanity',
+    quote:'"I didn\'t think you could bring real warmth into a bathroom with wood. I was completely wrong. The vanity unit is stunning. The water-resistant finish has held perfectly through eighteen months of heavy use."',
+    name:'Kevin Alcee', room:'Bathroom Vanity, Vieux Fort', avatar:'👨🏽'
+  },
+  {
+    item:'Home Office',
+    quote:'"Working from home was embarrassing before this. Now my office looks like it belongs in a magazine. The built-in shelving and desk unit changed how I feel about my work every single day."',
+    name:'Janelle Pierre', room:'Home Office, Soufrière', avatar:'👩🏾'
+  },
+];
+
+/* ═══════════════════════════════════
+   THEME SYSTEM
+═══════════════════════════════════ */
+
+/**
+ * Apply theme to <html> and update toggle button aria-label.
+ * Adds .theme-ready after first call so transitions only
+ * run on user-initiated changes, never on initial paint.
+ */
+function applyTheme(theme, animate) {
+  const html   = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+
+  html.setAttribute('data-theme', theme);
+  localStorage.setItem('ef-theme', theme);
+
+  if (toggle) {
+    toggle.setAttribute(
+      'aria-label',
+      theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+    );
+  }
+
+  // Enable CSS transitions only after first user toggle
+  if (animate) html.classList.add('theme-ready');
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  applyTheme(current === 'dark' ? 'light' : 'dark', true);
+}
+
+/**
+ * On first load — check localStorage first, then fall back
+ * to system preference. Never flash. Never override a
+ * stored preference with a system change.
+ */
+function initTheme() {
+  const stored       = localStorage.getItem('ef-theme');
+  const prefersDark  = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme        = stored || (prefersDark ? 'dark' : 'light');
+
+  // Apply without animation (already set by inline script,
+  // this just syncs the aria-label)
+  applyTheme(theme, false);
+
+  // Listen for OS-level changes — only honour if user
+  // hasn't made a manual choice
+  window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', (e) => {
+      if (!localStorage.getItem('ef-theme')) {
+        applyTheme(e.matches ? 'dark' : 'light', true);
+      }
+    });
+}
+
+// Run theme init immediately
+initTheme();
+
+/* ═══════════════════════════════════
+   TICKER
+═══════════════════════════════════ */
+function buildTicker() {
+  const items = [
+    'Kitchen Cabinetry',
+    'Bedroom Wardrobes',
+    'Dining Tables',
+    'Bathroom Vanities',
+    'Living Room Furniture',
+    'Home Offices',
+    'Custom Joinery',
+    'Handcrafted in Saint Lucia',
+  ];
+  const doubled = [...items, ...items];
+  document.getElementById('tickerTrack').innerHTML = doubled
+    .map(t => `<span class="ticker-item"><span class="tick-sep">◆</span>${t}</span>`)
+    .join('');
+}
+
+/* ═══════════════════════════════════
+   ROOMS GRID
+═══════════════════════════════════ */
+function buildRooms() {
+  document.getElementById('roomsGrid').innerHTML = rooms.map(r => `
+    <article class="room-card reveal" aria-label="${r.name}">
+      <div class="room-visual" style="background:${r.bg}" aria-hidden="true">
+        ${r.badge ? `<div class="room-badge">${r.badge}</div>` : ''}
+        <span class="room-visual-emoji" role="img" aria-label="${r.cat} icon">${r.emoji}</span>
+      </div>
+      <div class="room-body">
+        <div class="room-cat">${r.cat}</div>
+        <h3 class="room-name">${r.name}</h3>
+        <p class="room-desc">${r.desc}</p>
+        <div class="room-pieces" role="list" aria-label="Examples of ${r.name}">
+          ${r.pieces.map(p => `<span class="room-piece" role="listitem">${p}</span>`).join('')}
+        </div>
+        <button
+          class="btn-room-wa"
+          onclick="bookRoom(${JSON.stringify(r.wa)})"
+          aria-label="Enquire about ${r.name} on WhatsApp"
+        >
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          Enquire on WhatsApp
+        </button>
+      </div>
+    </article>`).join('');
+  observeReveal();
+}
+
+function bookRoom(wa) {
+  window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(wa)}`, '_blank');
+}
+
+/* ═══════════════════════════════════
+   MATERIALS
+═══════════════════════════════════ */
+function buildMaterials() {
+  document.getElementById('materialsGrid').innerHTML = materials.map(m => `
+    <div class="mat-card reveal" aria-label="${m.name} timber">
+      <div class="mat-swatch" style="background:${m.swatch}" role="img" aria-label="${m.name} colour swatch">
+        <span aria-hidden="true">${m.emoji}</span>
+      </div>
+      <div class="mat-name">${m.name}</div>
+      <div class="mat-desc">${m.desc}</div>
+    </div>`).join('');
+  observeReveal();
+}
+
+/* ═══════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════ */
+function buildTestimonials() {
+  document.getElementById('testiGrid').innerHTML = testimonials.map(t => `
+    <article class="testi-card reveal" aria-label="Review from ${t.name}">
+      <div class="testi-stars" aria-label="5 star rating" role="img">
+        ${Array(5).fill('<i class="fa-solid fa-star" aria-hidden="true"></i>').join('')}
+      </div>
+      <div class="testi-item">${t.item}</div>
+      <blockquote class="testi-quote">${t.quote}</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar" role="img" aria-label="${t.name} avatar">${t.avatar}</div>
+        <div>
+          <div class="testi-name">${t.name}</div>
+          <div class="testi-room">${t.room}</div>
+        </div>
+      </div>
+    </article>`).join('');
+  observeReveal();
+}
+
+/* ═══════════════════════════════════
+   QUOTE BUILDER → WHATSAPP
+═══════════════════════════════════ */
+function sendQuote() {
+  const room    = document.getElementById('qbRoom').value;
+  const piece   = document.getElementById('qbPiece').value;
+  const timber  = document.getElementById('qbTimber').value;
+  const budget  = document.getElementById('qbBudget').value;
+  const details = document.getElementById('qbDetails').value.trim();
+
+  const msg = [
+    `🪵 *Eurskin's Furniture — Custom Commission Enquiry*`,
+    `━━━━━━━━━━━━━━━━━━━━━━`,
+    `Room: ${room}`,
+    `Piece: ${piece}`,
+    `Timber Preference: ${timber}`,
+    `Budget: ${budget}`,
+    details ? `Details: ${details}` : '',
+    `━━━━━━━━━━━━━━━━━━━━━━`,
+    `Please advise on timeline and quote.`,
+    `🔗 Enquiry via: ${SITE}`
+  ].filter(Boolean).join('\n');
+
+  window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+/* ═══════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════ */
+function observeReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
+}
+
+/* ═══════════════════════════════════
+   INIT
+═══════════════════════════════════ */
+buildTicker();
+buildRooms();
+buildMaterials();
+buildTestimonials();
+observeReveal();
+</script>
+</body>
+</html>
+
